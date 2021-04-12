@@ -4,12 +4,13 @@ import math
 from files import *
 import random
 import datetime
+import os
 
 
 # login
 go("https://www.kicktipp.de/ewaldbuli/profil/login")
-fv('1', 'kennung', 'YOUREMAIL')
-fv('1', 'passwort', 'YOURPASSWORD')
+fv('1', 'kennung', os.getenv("EMAIL"))
+fv('1', 'passwort', os.getenv("PASSWORD"))
 submit('1')
 
 # evaluate best tipps
