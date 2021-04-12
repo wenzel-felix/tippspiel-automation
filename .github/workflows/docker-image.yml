@@ -15,6 +15,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag felixwenzel.jfrog.io/tipper/tipper:$(date +%s)
-           echo "${{ secrets.PASSWORD }}" | docker login --username ${{secrets.EMAIL}} --password-stdin
-           docker push felixwenzel.jfrog.io/tipper/tipper:$(date +%s)
+      run: docker build . --file Dockerfile --tag felixwenzel.jfrog.io/tipper/tipper:$(date +%s);
+           echo "${{ secrets.PASSWORD }}" | docker login felixwenzel.jfrog.io --username ${{secrets.EMAIL}} --password-stdin;
+           docker push felixwenzel.jfrog.io/tipper/tipper:$(date +%s);
