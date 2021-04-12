@@ -19,5 +19,5 @@ jobs:
            docker build . --file Dockerfile --tag felixwenzel.jfrog.io/tipper/tipper:$TAG;
            echo "${{ secrets.PASSWORD }}" | docker login felixwenzel.jfrog.io --username ${{secrets.EMAIL}} --password-stdin;
            docker push felixwenzel.jfrog.io/tipper/tipper:$TAG;
-           docker image --tag felixwenzel.jfrog.io/tipper/tipper:$TAG felixwenzel.jfrog.io/tipper/tipper;
+           docker image tag felixwenzel.jfrog.io/tipper/tipper:$TAG felixwenzel.jfrog.io/tipper/tipper;
            docker push felixwenzel.jfrog.io/tipper/tipper;
