@@ -25,8 +25,9 @@ tables = pd.read_html(html)[0]
 firstMatch = tables.iat[0, 0]
 
 try:
+    print("tried")
     if datetime.datetime.strptime(firstMatch, "%d.%m.%y %H:%M") > datetime.datetime.now():
-
+        print("matching date")
         for index, row in tables.iterrows():
             if (home := float(row[4])) > (away := float(row[6])):
                 tendency = home/away
