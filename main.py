@@ -7,14 +7,15 @@ import datetime
 import os
 
 
+tipp_group = os.getenv("NAME")
 # login
-go("https://www.kicktipp.de/ewaldbuli/profil/login")
+go(f"https://www.kicktipp.de/{tipp_group}/profil/login")
 fv('1', 'kennung', os.getenv("EMAIL"))
 fv('1', 'passwort', os.getenv("PASSWORD"))
 submit('1')
 
 # evaluate best tipps
-go("https://www.kicktipp.de/ewaldbuli/tippabgabe")
+go(f"https://www.kicktipp.de/{tipp_group}/tippabgabe")
 tipps = []
 
 # favorite = 0 => tendency for awayTeam
@@ -78,4 +79,4 @@ except:
     print("except")
 
 # logout
-go("https://www.kicktipp.de/ewaldbuli/profil/logout")
+go(f"https://www.kicktipp.de/{tipp_group}/profil/logout")
