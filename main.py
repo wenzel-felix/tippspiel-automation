@@ -26,8 +26,10 @@ tables = pd.read_html(html)[0]
 firstMatch = tables.iat[0, 0]
 
 try:
-    if datetime.datetime.strptime(firstMatch, "%d.%m.%y %H:%M") > datetime.datetime.now():
-    # print("matching date")
+    match_date = datetime.datetime.strptime(firstMatch, "%d.%m.%y %H:%M")
+    now = datetime.datetime.now()
+
+    if match_date > now:
         for index, row in tables.iterrows():
             try:
                 if (home := float(row[4])) > (away := float(row[6])):
