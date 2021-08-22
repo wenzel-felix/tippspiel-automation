@@ -32,14 +32,14 @@ try:
     if match_date > now:
         for index, row in tables.iterrows():
             try:
-                if (home := float(row[4])) > (away := float(row[6])):
+                if (home := float(row[4].split("/")[0])) > (away := float(row[6])):
                     tendency = home/away
                     favorite = 0
                 else:
                     tendency = away/home
                     favorite = 1
                 tipps.append([favorite, int(math.log2(tendency+0.5))])
-            except:
+            except Exception as e:
                 print("no bet-ratings")
                 tipps.append([0, 0])
 
