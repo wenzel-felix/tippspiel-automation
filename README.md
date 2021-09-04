@@ -1,4 +1,10 @@
-# ENVs needed
+# Automated Betting on Tippkick.de
+
+This application automatically bets for you on your tippkick-site.
+It uses historical data of 50 years German Bundesliga combined with the quotes for the teams during runtime to predict the results.
+The script will log in with your credentials, enter the predictions and log out.
+
+## ENVs needed
 
 |env-name|description|example|
 |-----|-----|-----|
