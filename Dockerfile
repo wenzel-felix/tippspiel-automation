@@ -1,9 +1,9 @@
 FROM python:3.9
 
 COPY requirements.txt requirements.txt
-COPY files.py files.py
+COPY historic_data.json historic_data.json
 COPY main.py main.py
 
-RUN pip3 install -r requirements.txt
+RUN pip install -r requirements.txt
 
 CMD ["python3", "main.py"]

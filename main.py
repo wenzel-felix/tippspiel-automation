@@ -1,12 +1,13 @@
 from twill.commands import *
 import pandas as pd
 import math
-from files import *
 import random
 import datetime
 import os
+import json
 
 
+historic_data = json.load(open("historic_data.json"))
 tipp_group = os.getenv("NAME")
 # login
 go(f"https://www.kicktipp.de/{tipp_group}/profil/login")
@@ -17,9 +18,6 @@ submit('1')
 # evaluate best tipps
 go(f"https://www.kicktipp.de/{tipp_group}/tippabgabe")
 tipps = []
-
-# favorite = 0 => tendency for awayTeam
-favorite = int
 
 html = show()
 tables = pd.read_html(html)[0]
@@ -45,15 +43,15 @@ try:
 
         for i in tipps:
             if i[1] == 0:
-                result, probability = zip(*remis)
+                result, probability = historic_data["remis"]
             elif i[1] == 1:
-                result, probability = zip(*oneahead)
+                result, probability = historic_data["oneahead"]
             elif i[1] == 2:
-                result, probability = zip(*twoahead)
+                result, probability = historic_data["twoahead"]
             elif i[1] == 3:
-                result, probability = zip(*threeahead)
+                result, probability = historic_data["threeahead"]
             elif i[1] == 4:
-                result, probability = zip(*fourahead)
+                result, probability = historic_data["fourahead"]
             else:
                 result = [str(i[1])+":0"]
                 probability = [1]
