@@ -5,6 +5,7 @@ import random
 import datetime
 import os
 import json
+import traceback
 
 
 historic_data = json.load(open("historic_data.json"))
@@ -30,7 +31,7 @@ try:
     if match_date > now:
         for index, row in tables.iterrows():
             try:
-                if (home := float(row[4].split("/")[0])) > (away := float(row[6])):
+                if (home := float(row[4].split("/")[0])) > (away := float(row[4].split("/")[2])):
                     tendency = home/away
                     favorite = 0
                 else:
@@ -75,8 +76,8 @@ try:
         print(scores)
 
         submit('1')
-except:
-    print("except")
+except Exception as e:
+    traceback.print_exc()
 
 # logout
 go(f"https://www.kicktipp.de/{tipp_group}/profil/logout")
